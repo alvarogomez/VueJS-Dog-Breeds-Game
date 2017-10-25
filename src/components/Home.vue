@@ -2,9 +2,7 @@
   <div class="page-wrapper">
     <h1>Choose the correct breed:</h1>
     <score :hits="hits" :fails="fails"></score>
-    <div class="img-container">
-      <img :src="urlImage" />
-    </div>
+    <pet-image :myUrlImage="urlImage"></pet-image>
     <div class="buttons-container">
       <button class="answer-button" v-for="breed in breedsAnswers" v-on:click="clickOnAnswer($event)"> {{ breed }} </button>
     </div>
@@ -13,6 +11,7 @@
 
 <script>
 import Score from "./Score";
+import petImage from "./PetImage";
 
 const breedsListURL = "https://dog.ceo/api/breeds/list";
 const randomBreedImgURL = "https://dog.ceo/api/breeds/image/random";
@@ -22,7 +21,8 @@ const timeAfterAnswer = 1000;
 export default {
   name: "Home",
   components: {
-    Score
+    Score,
+    petImage
   },
   data: function() {
     return {
