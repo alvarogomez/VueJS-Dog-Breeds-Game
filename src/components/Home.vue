@@ -3,15 +3,14 @@
     <h1>Choose the correct breed:</h1>
     <score :hits="hits" :fails="fails"></score>
     <pet-image :myUrlImage="urlImage"></pet-image>
-    <div class="buttons-container">
-      <button class="answer-button" v-for="breed in breedsAnswers" v-on:click="clickOnAnswer($event)"> {{ breed }} </button>
-    </div>
+    <buttons-container :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
   </div>
 </template>
 
 <script>
 import Score from "./Score";
 import petImage from "./PetImage";
+import ButtonsContainer from "./ButtonsContainer";
 
 const breedsListURL = "https://dog.ceo/api/breeds/list";
 const randomBreedImgURL = "https://dog.ceo/api/breeds/image/random";
@@ -22,7 +21,8 @@ export default {
   name: "Home",
   components: {
     Score,
-    petImage
+    petImage,
+    ButtonsContainer
   },
   data: function() {
     return {
@@ -125,37 +125,6 @@ export default {
     h1 {
       display: block;
       text-shadow: 1px 1px 1px lightslategray;
-    }
-    .img-container {
-      width: 100%;
-      img {
-        height: auto;
-        max-height: 450px;
-        box-shadow: #d4dee2 5px 5px;
-      }
-    }
-    .buttons-container {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      button {
-        width: 30%;
-        height: 50px;
-        line-height: 50px;
-        background-color: cornflowerblue;
-        text-transform: uppercase;
-        border-radius: 5px;
-        color: white;
-        font-size: 22px;
-        border-width: 1px;
-        border-stle: solid;
-        &.correct {
-          background-color: lawngreen;
-        }
-        &.false {
-          background-color: firebrick;
-        }
-      }
     }
   }
 </style>
