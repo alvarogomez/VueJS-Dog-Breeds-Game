@@ -19,7 +19,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .buttons-wrapper {
   display: flex;
@@ -39,8 +38,13 @@ export default {
     line-height: 5rem;
     background-color: white;
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 2rem;
+    @media (max-width: 1024px) {
+      line-height:3rem;
+      font-size: 1.5rem;
+    }
     border: 4px solid lightgreen;
+    outline: 4px solid skyblue;
     transition: 0.2s ease-in;
     text-shadow: 1px 2px 1px lightslategrey;
     box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);

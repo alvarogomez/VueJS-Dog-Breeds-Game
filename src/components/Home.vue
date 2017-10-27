@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <header>
-      <h1>Choose the correct breed:</h1>
+      <h1>Choose the correct breed</h1>
     </header>
     <div class="components">
       <pet-image class="flex-1" v-bind:class="{shrink: shrinkImage}" :myUrlImage="urlImage"></pet-image>
@@ -13,7 +13,6 @@
   </div>
 </template>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
   .page-wrapper {
     font-family: monospace;
@@ -22,6 +21,7 @@
     margin: 1rem;
     header {
       border: 3px solid lightgreen;
+      outline: 3px solid skyblue;
       background-color: #d5ffd5;
       margin-top: 1rem;
       font-size: 1.1rem;
@@ -35,11 +35,11 @@
     .components{
       display: flex;
       padding: 2rem 0;
-      transition: 0.1s ease-in;
       @media (max-width: 1024px) {
           flex-direction: column;
       }
       .shrink {
+        transition: 0.1s;
         opacity:0;
       }
     }
@@ -105,6 +105,7 @@ export default {
       const dataBreeds = await this.$http.get(breedsListURL);
       const dataJSON = await dataBreeds.json();
       this.breeds = dataJSON.message;
+      this.numberOfBreeds = this.breeds.length;
 
       return "done";
     },
@@ -121,9 +122,8 @@ export default {
       }
       return array;
     },
-    setIndexes: function() {
+    setQuestion: function() {
       let randomNum = Math.random();
-      this.numberOfBreeds = this.breeds.length;
       this.questionBreedIndex = Math.floor(randomNum * this.breeds.length);
     },
     setConcreteImage: async function() {
@@ -152,8 +152,10 @@ export default {
       this.breedsAnswers = this.shuffle(answers);
     },
     init: async function() {
-      await this.getBreeds();
-      this.setIndexes();
+      if (!this.breeds.length) {
+        await this.getBreeds();
+      }
+      this.setQuestion();
       await this.setConcreteImage();
       this.setAnswers();
       return "done";
