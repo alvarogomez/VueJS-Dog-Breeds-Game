@@ -27,17 +27,19 @@ export default {
       background-color: white;
       text-transform: uppercase;
       padding: 0.8rem 0;
-      margin: 0.5rem 0px;
+      margin: 2rem 0px;
       border: 5px solid;
       transition: 0.5s;
       box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     }
     .hits {
       color: limegreen;
+      outline: 5px solid lightgreen;
       font-style: bold;
     }
     .fails {
       color: darkred;
+      outline: 5px solid indianred;
       font-style: bold;
     }
   }

@@ -20,6 +20,7 @@ export default {
   width: 100%;
   img {
     border: 5px solid black;
+    outline: 5px solid lightgrey;
     max-height: 550px;
     box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     width: auto;

@@ -49,7 +49,6 @@ export default {
     text-shadow: 1px 2px 1px lightslategrey;
     box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     &:focus {
-      outline: none;
     }
     &.correct {
       transform: scale(1.1, 1.1);
