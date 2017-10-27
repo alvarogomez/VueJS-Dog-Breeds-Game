@@ -17,12 +17,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.pet-img-container {
+.pet-image-wrapper {
   width: 100%;
   img {
+    border: 5px solid black;
     height: auto;
-    max-height: 450px;
-    box-shadow: #d4dee2 5px 5px;
+    max-height: 450px
   }
 }
 </style>

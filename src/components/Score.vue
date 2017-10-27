@@ -20,11 +20,13 @@ export default {
 <style lang="scss">
   .score-wrapper{
     .counter {
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       background-color: white;
-      padding: 0.3rem 0;
-      margin: 0.3rem 0px;
-      border: 1px solid;
+      text-transform: uppercase;
+      padding: 0.8rem 0;
+      margin: 0.5rem 0px;
+      border: 5px solid;
+      transition: 0.5s;
     }
     .hits {
       color: limegreen;

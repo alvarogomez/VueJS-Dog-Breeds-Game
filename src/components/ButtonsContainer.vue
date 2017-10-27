@@ -25,22 +25,32 @@ export default {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  flex-direction: column;
+  padding: 0 5rem;
   button {
-    width: 30%;
-    height: 50px;
-    line-height: 50px;
-    background-color: cornflowerblue;
+    padding: 0 2rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: #2c3e50;
+    line-height: 65px;
+    background-color: white;
     text-transform: uppercase;
-    border-radius: 5px;
-    color: white;
-    font-size: 22px;
-    border-width: 1px;
-    border-stle: solid;
+    font-size: 30px;
+    border: 4px solid lightgreen;
+    transition: 0.3s ease-in;
+    text-shadow: 1px 2px 1px lightslategrey;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+    &:focus {
+      outline: none;
+    }
     &.correct {
+      transform: scale(1.1, 1.1);
       background-color: lawngreen;
     }
     &.false {
-      background-color: firebrick;
+      transform: scale(1.1, 1.1);
+      background-color: darkred;
+      color: white;
     }
   }
 }

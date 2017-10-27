@@ -1,11 +1,45 @@
 <template>
   <div class="page-wrapper">
-    <h1>Choose the correct breed:</h1>
-    <score :hits="hits" :fails="fails"></score>
-    <pet-image :myUrlImage="urlImage"></pet-image>
-    <buttons-container :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
+    <header>
+      <h1>Choose the correct breed:</h1>
+    </header>
+    <div class="components">
+      <pet-image class="flex-1" :myUrlImage="urlImage"></pet-image>
+      <buttons-container class="flex-1" :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
+    </div>
+    <div class="scorebox">
+      <score class="":hits="hits" :fails="fails"></score>
+    </div>
   </div>
 </template>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+  .page-wrapper {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    header {
+      border: 3px solid lightgreen;
+      background-color: white;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+    h1 {
+      text-transform: uppercase;
+      display: block;
+      text-shadow: 1px 1px 1px lightslategray;
+    }
+    .components{
+      display: flex;
+      padding: 2rem 0;
+    }
+    .flex-1 {
+      flex: 1 auto;
+    }
+  }
+</style>
 
 <script>
 import Score from "./Score";
@@ -31,7 +65,8 @@ export default {
       questionBreedIndex: 0,
       breedsAnswers: ["a", "b", "c"],
       hits: 0,
-      fails: 0
+      fails: 0,
+      columns: true
     };
   },
   methods: {
@@ -118,13 +153,3 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-  .page-wrapper {
-    h1 {
-      display: block;
-      text-shadow: 1px 1px 1px lightslategray;
-    }
-  }
-</style>

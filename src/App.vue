@@ -20,6 +20,9 @@ export default {
   margin-top: 0px;
 }
 html {
-  background-color: #f5fdff;
+  background-color: rgba(255,105,180,0.6);
+}
+body {
+  margin: 0;
 }
 </style>
