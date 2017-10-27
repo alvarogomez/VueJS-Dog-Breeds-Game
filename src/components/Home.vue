@@ -57,7 +57,7 @@ import ButtonsContainer from "./ButtonsContainer";
 const breedsListURL = "https://dog.ceo/api/breeds/list";
 const randomBreedImgURL = "https://dog.ceo/api/breeds/image/random";
 const numberOfAnswers = 3;
-const timeAfterAnswer = 1000;
+const timeAfterAnswer = 1500;
 
 export default {
   name: "Home",

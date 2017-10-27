@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss">
 .buttons-wrapper {
+  $animationTime : 0.75s;
   display: flex;
   justify-content: space-around;
   margin-top: 1rem;
@@ -48,21 +49,86 @@ export default {
     transition: 0.2s ease-in;
     text-shadow: 1px 2px 1px lightslategrey;
     box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
-    &:focus {
-    }
     &.correct {
-      transform: scale(1.1, 1.1);
-      background-color: lawngreen;
+      background-color:rgba(124,252,0,1);
+      animation: hitAnimation $animationTime infinite cubic-bezier(0.24,-0.12, 0, 1.99);
       @media (max-width: 1024px) {
         transform: scale(1, 1.2);
+        animation: hitAnimationMobile $animationTime infinite cubic-bezier(0.24,-0.12, 0, 1.99);
       }
     }
     &.false {
-      transform: scale(1.1, 1.1);
       background-color: darkred;
+      animation: failAnimation $animationTime infinite cubic-bezier(0.24,-0.12, 0, 1.99);
       color: white;
+
       @media (max-width: 1024px) {
         transform: scale(1, 1.2);
+        animation: failAnimationMobile $animationTime infinite cubic-bezier(0.24,-0.12, 0, 1.99);
+      }
+    }
+    @keyframes hitAnimation {
+      0% {
+        background-color:rgba(124,252,0,1);
+      }
+      30% {
+        transform: scale(1, 1.1);
+        background-color:rgba(124,252,0,0.7);
+      }
+      60% {
+        transform: scale(1.1, 1);
+        background-color:rgba(124,252,0,0.8);
+      }
+      100% {
+        background-color:rgba(124,252,0,1);
+      }
+    }
+    @keyframes failAnimation {
+      0% {
+        background-color:rgba(139,0,0,1);
+      }
+      30% {
+        transform: scale(1, 1.1);
+        background-color:rgba(167,0,0,1);
+      }
+      60% {
+        transform: scale(1.1, 1);
+        background-color:rgba(220,0,0,1);
+      }
+      100% {
+        background-color:rgba(255,0,0,1);
+      }
+    }
+    @keyframes hitAnimationMobile {
+      0% {
+        background-color:rgba(124,252,0,1);
+      }
+      30% {
+        transform: scale(1, 1.01);
+        background-color:rgba(124,252,0,0.7);
+      }
+      60% {
+        transform: scale(1.01, 1);
+        background-color:rgba(124,252,0,0.8);
+      }
+      100% {
+        background-color:rgba(124,252,0,1);
+      }
+    }
+    @keyframes failAnimationMobile {
+      0% {
+        background-color:rgba(139,0,0,1);
+      }
+      30% {
+        transform: scale(1, 1.01);
+        background-color:rgba(167,0,0,1);
+      }
+      60% {
+        transform: scale(1.01, 1);
+        background-color:rgba(220,0,0,1);
+      }
+      100% {
+        background-color:rgba(255,0,0,1);
       }
     }
   }
