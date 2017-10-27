@@ -4,8 +4,9 @@
       <h1>Choose the correct breed</h1>
     </header>
     <div class="components">
-      <pet-image class="flex-1" v-bind:class="{shrink: shrinkImage}" :myUrlImage="urlImage"></pet-image>
-      <buttons-container class="flex-1" :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
+      <spinner class="spinner" v-if="(loadingImage == true) || (loadingAnswers == true)"></spinner>
+      <pet-image class="flex-1" v-bind:class="{shrink: loadingImage}" :myUrlImage="urlImage"></pet-image>
+      <buttons-container class="flex-1" v-bind:class="{shrink: loadingAnswers}" :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
     </div>
     <div class="scorebox">
       <score class="":hits="hits" :fails="fails"></score>
@@ -13,46 +14,11 @@
   </div>
 </template>
 
-<style lang="scss">
-  .page-wrapper {
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    header {
-      border: 3px solid lightgreen;
-      outline: 3px solid skyblue;
-      background-color: #d5ffd5;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    h1 {
-      text-transform: uppercase;
-      display: block;
-      text-shadow: 1px 1px 1px lightslategray;
-    }
-    .components{
-      display: flex;
-      padding: 2rem 0;
-      @media (max-width: 1024px) {
-          flex-direction: column;
-      }
-      .shrink {
-        transition: 0.1s;
-        opacity:0;
-      }
-    }
-    .flex-1 {
-      flex: 1 1;
-    }
-  }
-</style>
-
 <script>
 import Score from "./Score";
 import petImage from "./PetImage";
 import ButtonsContainer from "./ButtonsContainer";
+import Spinner from "./Spinner";
 
 const breedsListURL = "https://dog.ceo/api/breeds/list";
 const randomBreedImgURL = "https://dog.ceo/api/breeds/image/random";
@@ -64,7 +30,8 @@ export default {
   components: {
     Score,
     petImage,
-    ButtonsContainer
+    ButtonsContainer,
+    Spinner
   },
   data: function() {
     return {
@@ -74,7 +41,8 @@ export default {
       breedsAnswers: ["a", "b", "c"],
       hits: 0,
       fails: 0,
-      shrinkImage: true,
+      loadingImage: true,
+      loadingAnswers: true,
       columns: true
     };
   },
@@ -134,7 +102,7 @@ export default {
       const dataImg = await this.$http.get(url);
       const dataJSON = await dataImg.json();
       this.urlImage = dataJSON.message;
-      this.shrinkImage = false;
+      this.loadingImage = false;
       return "done";
     },
     setAnswers: function() {
@@ -150,6 +118,7 @@ export default {
         }
       }
       this.breedsAnswers = this.shuffle(answers);
+      this.loadingAnswers = false;
     },
     init: async function() {
       if (!this.breeds.length) {
@@ -166,3 +135,39 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .page-wrapper {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    header {
+      border: 3px solid lightgreen;
+      outline: 3px solid skyblue;
+      background-color: #d5ffd5;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      text-transform: uppercase;
+      display: block;
+      text-shadow: 1px 1px 1px lightslategray;
+    }
+    .components{
+      display: flex;
+      padding: 2rem 0;
+      @media (max-width: 1024px) {
+          flex-direction: column;
+      }
+      .shrink {
+        transition: 0.1s;
+        opacity:0;
+      }
+    }
+    .flex-1 {
+      flex: 1 1;
+    }
+  }
+</style>
