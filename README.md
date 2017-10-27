@@ -3,8 +3,7 @@ Just a small quiz about dog breeds using dog.ceo public API.
 
 Just run:
 
-*npm install
-
-*npm start
+npm install
+npm start
 
 Enjoy!
