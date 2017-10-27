@@ -34,6 +34,9 @@
     .components{
       display: flex;
       padding: 2rem 0;
+      @media (max-width: 1024px) {
+          flex-direction: column;
+      }
     }
     .flex-1 {
       flex: 1 auto;

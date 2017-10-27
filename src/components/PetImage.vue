@@ -21,8 +21,13 @@ export default {
   width: 100%;
   img {
     border: 5px solid black;
-    height: auto;
-    max-height: 450px
+    max-height: 550px;
+    width: auto;
+    @media (max-width: 1024px) {
+      max-height: none;
+      height: auto;
+      width: 100%;
+    }
   }
 }
 </style>
