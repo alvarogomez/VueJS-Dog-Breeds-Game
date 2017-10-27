@@ -43,7 +43,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #333;
+    background-color: lightgreen;
     -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
     animation: sk-foldCubeAngle 2.4s infinite linear both;
     -webkit-transform-origin: 100% 100%;

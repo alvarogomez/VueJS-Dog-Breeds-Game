@@ -149,6 +149,9 @@ export default {
       margin-top: 1rem;
       font-size: 1.1rem;
       box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+      @media (max-width: 1024px) {
+          font-size: 0.8rem;
+      }
     }
     h1 {
       text-transform: uppercase;
@@ -159,7 +162,7 @@ export default {
       display: flex;
       padding: 2rem 0;
       @media (max-width: 1024px) {
-          flex-direction: column;
+        flex-direction: column;
       }
       .shrink {
         transition: 0.1s;
