@@ -1,6 +1,6 @@
 <template>
   <div class="score-wrapper">
-    <p class="hits counter" v-if="hits>0">Hits: {{hits}}</p>
+    <p class="hits counter" v-if="hits>0" v-on:change="foo">Hits: {{hits}}</p>
     <p class="fails counter" v-if="fails>0">Fails: {{fails}}</p>
   </div>
 </template>
@@ -12,7 +12,11 @@ export default {
   data: function() {
     return {};
   },
-  methods: {}
+  methods: {
+    foo: function() {
+      console.log("fooo");
+    }
+  }
 };
 </script>
 
@@ -27,6 +31,7 @@ export default {
       margin: 0.5rem 0px;
       border: 5px solid;
       transition: 0.5s;
+      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     }
     .hits {
       color: limegreen;

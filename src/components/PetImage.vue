@@ -22,11 +22,12 @@ export default {
   img {
     border: 5px solid black;
     max-height: 550px;
+    box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     width: auto;
     @media (max-width: 1024px) {
       max-height: none;
       height: auto;
-      width: 100%;
+      width: 50%;
     }
   }
 }

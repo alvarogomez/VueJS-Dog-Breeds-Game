@@ -4,7 +4,7 @@
       <h1>Choose the correct breed:</h1>
     </header>
     <div class="components">
-      <pet-image class="flex-1" :myUrlImage="urlImage"></pet-image>
+      <pet-image class="flex-1" v-bind:class="{shrink: shrinkImage}" :myUrlImage="urlImage"></pet-image>
       <buttons-container class="flex-1" :answers="breedsAnswers" v-on:answerClicked="clickOnAnswer"></buttons-container>
     </div>
     <div class="scorebox">
@@ -22,9 +22,10 @@
     margin: 1rem;
     header {
       border: 3px solid lightgreen;
-      background-color: white;
+      background-color: #d5ffd5;
       margin-top: 1rem;
       font-size: 1.1rem;
+      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     }
     h1 {
       text-transform: uppercase;
@@ -34,12 +35,16 @@
     .components{
       display: flex;
       padding: 2rem 0;
+      transition: 0.1s ease-in;
       @media (max-width: 1024px) {
           flex-direction: column;
       }
+      .shrink {
+        opacity:0;
+      }
     }
     .flex-1 {
-      flex: 1 auto;
+      flex: 1 1;
     }
   }
 </style>
@@ -69,6 +74,7 @@ export default {
       breedsAnswers: ["a", "b", "c"],
       hits: 0,
       fails: 0,
+      shrinkImage: true,
       columns: true
     };
   },
@@ -82,6 +88,7 @@ export default {
         this.hits = this.hits + 1;
         setTimeout(() => {
           event.target.classList.remove("correct");
+          this.shrinkImage = true;
           this.init();
         }, timeAfterAnswer);
       } else {
@@ -89,6 +96,7 @@ export default {
         this.fails = this.fails + 1;
         setTimeout(() => {
           event.target.classList.remove("false");
+          this.shrinkImage = true;
           this.init();
         }, timeAfterAnswer);
       }
@@ -126,7 +134,7 @@ export default {
       const dataImg = await this.$http.get(url);
       const dataJSON = await dataImg.json();
       this.urlImage = dataJSON.message;
-
+      this.shrinkImage = false;
       return "done";
     },
     setAnswers: function() {
