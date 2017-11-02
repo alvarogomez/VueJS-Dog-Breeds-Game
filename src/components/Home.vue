@@ -33,6 +33,7 @@
     h1 {
       text-transform: uppercase;
       display: block;
+      margin: 0.7rem auto;
       text-shadow: 1px 1px 1px lightslategray;
     }
     .components{
