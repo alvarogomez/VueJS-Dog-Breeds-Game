@@ -22,15 +22,21 @@ export default {
 
 <style lang="scss">
   .score-wrapper{
+    margin-top: -1rem;
     .counter {
-      font-size: 1.9rem;
+      font-size: 1.5rem;
       background-color: white;
       text-transform: uppercase;
-      padding: 0.8rem 0;
-      margin: 2rem 0px;
+      padding: 0.5rem 0;
+      margin: 1rem 0px;
       border: 5px solid;
       transition: 0.5s;
       box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+      text-shadow: 1px 2px 1px lightgrey;
+      @media (max-width: 1024px) {
+        padding: 0.25rem 0;
+        font-size: 1.2rem;
+      }
     }
     .hits {
       color: limegreen;

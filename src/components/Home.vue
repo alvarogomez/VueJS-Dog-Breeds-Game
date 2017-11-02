@@ -23,9 +23,12 @@
       border: 3px solid lightgreen;
       outline: 3px solid skyblue;
       background-color: #d5ffd5;
-      margin-top: 1rem;
-      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
       box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+      @media (max-width: 1024px) {
+        font-size: 0.7rem;
+      }
     }
     h1 {
       text-transform: uppercase;
@@ -34,7 +37,7 @@
     }
     .components{
       display: flex;
-      padding: 2rem 0;
+      padding: 1rem 0;
       @media (max-width: 1024px) {
           flex-direction: column;
       }
