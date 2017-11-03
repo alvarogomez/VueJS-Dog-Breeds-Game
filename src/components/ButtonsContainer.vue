@@ -23,7 +23,7 @@ export default {
 .buttons-wrapper {
   $animationTime : 0.75s;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 1rem;
   flex-direction: column;
   padding: 0 5rem;
@@ -31,23 +31,23 @@ export default {
     padding: 0;
   }
   button {
-    padding: 0 2rem;
+    padding: 0 1rem;
     margin: 0.5rem 0;
     font-weight: bold;
     font-family: monospace;
     color: #2c3e50;
-    line-height: 5rem;
+    line-height: 3rem;
     background-color: white;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1.5rem;
     @media (max-width: 1024px) {
-      line-height:3rem;
-      font-size: 1.5rem;
+      line-height:2rem;
+      font-size: 1.2rem;
     }
     border: 4px solid lightgreen;
     outline: 4px solid skyblue;
     transition: 0.2s ease-in;
-    text-shadow: 1px 2px 1px lightslategrey;
+    text-shadow: 1px 2px 1px lightgrey;
     box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
     &.correct {
       background-color:rgba(124,252,0,1);

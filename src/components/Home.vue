@@ -14,6 +14,46 @@
   </div>
 </template>
 
+<style lang="scss">
+  .page-wrapper {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    header {
+      border: 3px solid lightgreen;
+      outline: 3px solid skyblue;
+      background-color: #d5ffd5;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.2);
+      @media (max-width: 1024px) {
+        font-size: 0.7rem;
+      }
+    }
+    h1 {
+      text-transform: uppercase;
+      display: block;
+      margin: 0.7rem auto;
+      text-shadow: 1px 1px 1px lightslategray;
+    }
+    .components{
+      display: flex;
+      padding: 1rem 0;
+      @media (max-width: 1024px) {
+          flex-direction: column;
+      }
+      .shrink {
+        transition: 0.1s;
+        opacity:0;
+      }
+    }
+    .flex-1 {
+      flex: 1 1;
+    }
+  }
+</style>
+
 <script>
 import Score from "./Score";
 import petImage from "./PetImage";
